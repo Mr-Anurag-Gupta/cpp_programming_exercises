@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.ps1": "shellscript",
+        "string": "cpp",
+        "iosfwd": "cpp"
+    }
+}
