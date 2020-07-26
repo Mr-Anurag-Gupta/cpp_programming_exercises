@@ -11,16 +11,16 @@
 
 #include <iostream>
 #include <fstream>
-#include <map>
+#include <iomanip>
 
 #define FILES_PATH "files/"
 
 void readfile(std::string filename);
-//void output_directory(std::map<std::string, std::string> teldirectory);
+bool checkEOF(std::ifstream &);
 
 int main(int argc, char *argv[])
 {
-    std::string filename = "ex_11_2_teldirectory.dat";
+    std::string filename = "TelephoneDirectory.dat";
 
     readfile(filename);
 
@@ -34,24 +34,57 @@ void readfile(std::string filename)
 {
     // Create input stream.
     std::ifstream fin(FILES_PATH + filename, std::ios_base::in);
-    try
-    {
-        fin.exceptions(fin.failbit);
-    }
-    catch (std::ios_base::failure &e)
-    {
-        std::cerr << "Caught an ios_base::failure.\n"
-                  << "Explanatory string: " << e.what() << '\n'
-                  << "Error code: " << e.code() << '\n';
-    }
+
+    // try
+    // {
+    //     // Setting exception mask.
+    //     // NOTE: This tells compiler to throw exception when
+    //     //       following iostate's are set.
+    //     fin.exceptions(fin.failbit | fin.badbit);
+
+    //     // Open file.
+    //     fin.open(FILES_PATH + filename, std::ios_base::in);
+    // }
+    // catch (std::ios_base::failure &e)
+    // {
+    //     std::cerr << "Caught an ios_base::failure.\n"
+    //               << "Explanatory string: " << e.what() << '\n'
+    //               << "Error code: " << e.code() << '\n';
+    // }
 
     // Reading data.
-    constexpr int SIZE = 100;
-    char line[SIZE] = {'\0'};
-    while (fin.getline(line, SIZE))
+    std::string data;
+    while (!fin.eof())
     {
-        std::cout << line << std::endl;
+        fin >> data;
+
+        // Check if data read is successful.
+        if (checkEOF(fin))
+            break;
+
+        std::cout.setf(std::ios::left, std::ios::adjustfield);
+        std::cout << std::setw(10) << data;
+
+        fin >> data;
+
+        // Check if data read is successful.
+        if (checkEOF(fin))
+            break;
+
+        std::cout.setf(std::ios::right, std::ios::adjustfield);
+        std::cout << std::setw(10) << data;
+
+        std::cout << "\n";
     }
 
     fin.close();
+}
+
+bool checkEOF(std::ifstream &fin)
+{
+    if (fin.eof())
+    {
+        return true;
+    }
+    return false;
 }

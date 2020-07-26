@@ -8,14 +8,14 @@
 
 int main(int argc, char *argv[])
 {
-    std::ifstream fin("read.txt");
+    std::ifstream fin("files/read.txt");
     if (!fin)
     {
         std::cerr << "Error: Failed to open file 'read.txt'\n";
         exit(1);
     }
 
-    std::ofstream fout("write.txt");
+    std::ofstream fout("files/write.txt");
     if (!fout)
     {
         std::cerr << "Error: Failed to open file 'write.txt'\n";
@@ -25,8 +25,18 @@ int main(int argc, char *argv[])
     // Reading data
     char ch;
     unsigned short space_count = 0;
-    while (fin.get(ch))
+    while (!fin.eof())
     {
+        fin.get(ch);
+
+        // This verifies if character read is successfully or something is
+        // available to read.
+        if (fin.fail())
+        {
+            std::cout << "Stopping read... EOF reached.\n";
+            break;
+        }
+
         // Check if the character read is a space
         while (isblank(static_cast<unsigned char>(ch)))
         {
