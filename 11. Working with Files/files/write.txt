@@ -1,0 +1,2 @@
+This line has a single space.
+This line has two consecutive spaces. Here come another four  consecutive spaces.
