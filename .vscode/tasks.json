@@ -31,7 +31,10 @@
       "options": {
         "cwd": "/usr/bin"
       },
-      "group": "build"
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
     },
     {
       "type": "shell",
@@ -45,10 +48,7 @@
         "${file}"
       ],
       "problemMatcher": ["$msCompile"],
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      }
+      "group": "build"
     }
   ],
   "version": "2.0.0"
