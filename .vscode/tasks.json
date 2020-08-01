@@ -8,7 +8,7 @@
         "-g",
         "${file}",
         "-o",
-        "${fileDirname}/${fileBasenameNoExtension}",
+        "${fileDirname}/${fileBasenameNoExtension}.out",
         "--debug"
       ],
       "options": {
@@ -25,7 +25,7 @@
         "-stdlib=libc++",
         "${file}",
         "-o",
-        "${fileDirname}/${fileBasenameNoExtension}",
+        "${fileDirname}/${fileBasenameNoExtension}.out",
         "--debug"
       ],
       "options": {
