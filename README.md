@@ -12,4 +12,6 @@ Solutions to programming exercises given in the book Object Oriented Programming
 - [ ] 8. Inheritance: Extending Classes
 - [x] 9. Pointers, Virtual Functions and Polymorphism
 - [x] 10. Managing Console IO Operations
-- [ ] 11. Working with Files
+- [x] 11. Working with Files
+- [x] 12. Templates
+- [x] 13. Exception Handling
