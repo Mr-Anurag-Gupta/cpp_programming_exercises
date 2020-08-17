@@ -15,4 +15,5 @@ Solutions to programming exercises given in the book Object Oriented Programming
 - [x] 11. Working with Files
 - [x] 12. Templates
 - [x] 13. Exception Handling
-- [ ] 14. Introduction to Standard Template Library
+- [x] 14. Introduction to Standard Template Library
+- [ ] 15. Manipulation Strings
